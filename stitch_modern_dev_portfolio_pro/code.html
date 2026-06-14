@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alex Rivera | Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Geist', sans-serif;
+            background-color: #10131a;
+            color: #e1e2ec;
+            scroll-behavior: smooth;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(248, 250, 252, 0.1);
+        }
+
+        .glow-accent {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(173, 198, 255, 0.15) 0%, rgba(16, 19, 26, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .nav-link-active {
+            color: #adc6ff;
+            font-weight: 700;
+            border-bottom: 2px solid #adc6ff;
+            padding-bottom: 4px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#e1e2ec",
+                      "on-secondary-container": "#b0b2ff",
+                      "surface-variant": "#32353c",
+                      "tertiary-fixed": "#acedff",
+                      "on-tertiary-container": "#002f38",
+                      "on-secondary-fixed-variant": "#2f2ebe",
+                      "outline-variant": "#424754",
+                      "inverse-primary": "#005ac2",
+                      "surface-container": "#1d2027",
+                      "surface-container-low": "#191b23",
+                      "outline": "#8c909f",
+                      "inverse-on-surface": "#2e3038",
+                      "tertiary": "#4cd7f6",
+                      "surface-container-high": "#272a31",
+                      "secondary-fixed": "#e1e0ff",
+                      "on-primary-fixed": "#001a42",
+                      "error": "#ffb4ab",
+                      "on-background": "#e1e2ec",
+                      "background": "#10131a",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#4cd7f6",
+                      "on-tertiary-fixed": "#001f26",
+                      "surface": "#10131a",
+                      "on-primary-fixed-variant": "#004395",
+                      "surface-container-highest": "#32353c",
+                      "surface-tint": "#adc6ff",
+                      "on-tertiary": "#003640",
+                      "primary-fixed-dim": "#adc6ff",
+                      "on-surface": "#e1e2ec",
+                      "error-container": "#93000a",
+                      "tertiary-container": "#009eb9",
+                      "surface-bright": "#363941",
+                      "on-primary": "#002e6a",
+                      "on-secondary": "#1000a9",
+                      "on-tertiary-fixed-variant": "#004e5c",
+                      "secondary-fixed-dim": "#c0c1ff",
+                      "secondary": "#c0c1ff",
+                      "surface-dim": "#10131a",
+                      "primary": "#adc6ff",
+                      "surface-container-lowest": "#0b0e15",
+                      "primary-fixed": "#d8e2ff",
+                      "on-surface-variant": "#c2c6d6",
+                      "on-secondary-fixed": "#07006c",
+                      "primary-container": "#4d8eff",
+                      "secondary-container": "#3131c0",
+                      "on-primary-container": "#00285d",
+                      "on-error": "#690005"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "container-max": "1200px",
+                      "xs": "8px",
+                      "md": "24px",
+                      "base": "4px",
+                      "xl": "80px",
+                      "sm": "16px",
+                      "lg": "48px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Geist"],
+                      "display-lg": ["Geist"],
+                      "headline-sm": ["Geist"],
+                      "display-lg-mobile": ["Geist"],
+                      "body-lg": ["Geist"],
+                      "label-sm": ["Geist"],
+                      "label-md": ["Geist"],
+                      "body-md": ["Geist"]
+              },
+              "fontSize": {
+                      "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background selection:bg-primary/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-background/70 backdrop-blur-xl border-b border-outline-variant/10 shadow-2xl">
+<div class="max-w-container-max mx-auto px-md flex justify-between items-center h-16">
+<div class="font-headline-sm text-headline-sm font-bold tracking-tighter text-primary">ALEX_RIVERA.EXE</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#projects">Projects</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#about">Stack</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#experience">Experience</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#contact">Contact</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:bg-white/5 p-2 rounded-full transition-all duration-300 active:scale-95">terminal</button>
+<button class="bg-primary text-on-primary px-sm py-2 rounded-lg font-label-md text-label-md font-bold hover:opacity-90 transition-all active:scale-95">Resume</button>
+</div>
+</div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden" id="home">
+<div class="glow-accent top-[-100px] left-[-100px]"></div>
+<div class="glow-accent bottom-[-200px] right-[-100px] bg-tertiary/10"></div>
+<div class="max-w-container-max mx-auto px-md w-full grid md:grid-cols-12 gap-lg items-center">
+<div class="md:col-span-7 space-y-md">
+<div class="inline-flex items-center gap-xs px-sm py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm uppercase tracking-widest">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        Available for Full-Stack Opportunities
+                    </div>
+<h1 class="font-display-lg text-display-lg text-on-surface">
+                        Engineering digital <br/><span class="text-primary italic">precision</span> and logic.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        A Senior Software Engineer specializing in scalable architecture, intuitive interfaces, and high-performance backend systems. Solving complex problems with elegant code.
+                    </p>
+<div class="flex flex-wrap gap-md pt-md">
+<a class="bg-gradient-to-r from-primary to-secondary text-on-primary px-lg py-sm rounded-lg font-label-md text-label-md font-bold transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-xs" href="#projects">
+                            View Portfolio <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<a class="bg-transparent border border-outline-variant/30 text-on-surface px-lg py-sm rounded-lg font-label-md text-label-md font-bold transition-all hover:border-primary hover:text-primary active:scale-95" href="#contact">
+                            Let's Talk
+                        </a>
+</div>
+</div>
+<div class="md:col-span-5 relative group">
+<div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full group-hover:bg-primary/30 transition-all duration-700"></div>
+<div class="relative aspect-square rounded-2xl overflow-hidden border border-outline-variant/20 glass-card">
+<img alt="Alex Rivera Portrait" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" data-alt="A professional, high-end corporate portrait of Alex Rivera, a software engineer with a confident expression. He is wearing a minimalist dark navy blazer over a charcoal t-shirt, set against a dark, architecturally interesting background with soft, cool blue accent lighting. The photography is sharp and editorial, utilizing shallow depth of field to emphasize the subject while maintaining a technical, modern atmosphere consistent with a premium portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7oYvxX-myKIMLDUKEyhA7jRQwLDfwGmyDVSuD3mFn6b0TOyXfwYN1BIeTCZqGitx8bw-1Rt25_7ydbAyOpOcdTqvzA9No925oEaCaqrTMydABH8afxaL6eYhwrhRqB2cNOLAgxG-2hl5pbW_wYjVj0SBFw8yU7kQwe-ONdjK_iEFWj-79wxUn0AuJR-9jnMqWq515RsNQOHCfm3-dyYP7iktpwiWLqI8YoUHrdw9KMjJsII6byQH3XFPPnlxj_vnuozgMju_ka4M"/>
+</div>
+<div class="absolute -bottom-6 -right-6 p-md glass-card rounded-xl border border-primary/20 animate-bounce delay-1000">
+<div class="font-label-sm text-label-sm text-primary uppercase">Years Experience</div>
+<div class="font-display-lg text-headline-md text-on-surface">08+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About / Strengths Section -->
+<section class="py-xl bg-surface-container-lowest" id="about">
+<div class="max-w-container-max mx-auto px-md">
+<div class="mb-lg max-w-2xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">The Strategic Approach</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Building software is about more than syntax—it's about creating value, ensuring reliability, and enabling growth through technical excellence.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-md">
+<!-- Professional Strengths -->
+<div class="p-lg glass-card rounded-xl border-outline-variant/10 hover:border-primary/30 transition-all group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-md group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Professional Strengths</h3>
+<ul class="space-y-xs font-body-md text-body-md text-on-surface-variant">
+<li class="flex items-center gap-xs"><span class="w-1 h-1 bg-primary rounded-full"></span> Scalable Microservices</li>
+<li class="flex items-center gap-xs"><span class="w-1 h-1 bg-primary rounded-full"></span> UI/UX Design Systems</li>
+<li class="flex items-center gap-xs"><span class="w-1 h-1 bg-primary rounded-full"></span> Cloud Infrastructure (AWS)</li>
+<li class="flex items-center gap-xs"><span class="w-1 h-1 bg-primary rounded-full"></span> Performance Optimization</li>
+</ul>
+</div>
+<!-- Career Objectives -->
+<div class="p-lg glass-card rounded-xl border-outline-variant/10 hover:border-primary/30 transition-all group">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary mb-md group-hover:bg-tertiary group-hover:text-on-tertiary transition-all">
+<span class="material-symbols-outlined">flag</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Career Objectives</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Aiming to lead cross-functional engineering teams in building next-generation AI platforms and contributing to open-source ecosystems that define the future of the web.</p>
+</div>
+<!-- Tech Stack -->
+<div class="p-lg glass-card rounded-xl border-outline-variant/10 hover:border-primary/30 transition-all group">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-md group-hover:bg-secondary group-hover:text-on-secondary transition-all">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Tech Stack</h3>
+<div class="flex flex-wrap gap-xs pt-xs">
+<span class="px-sm py-1 bg-surface-container rounded-full text-primary font-label-sm text-label-sm border border-outline-variant/20">TypeScript</span>
+<span class="px-sm py-1 bg-surface-container rounded-full text-primary font-label-sm text-label-sm border border-outline-variant/20">React/Next.js</span>
+<span class="px-sm py-1 bg-surface-container rounded-full text-primary font-label-sm text-label-sm border border-outline-variant/20">Node.js</span>
+<span class="px-sm py-1 bg-surface-container rounded-full text-primary font-label-sm text-label-sm border border-outline-variant/20">Python</span>
+<span class="px-sm py-1 bg-surface-container rounded-full text-primary font-label-sm text-label-sm border border-outline-variant/20">PostgreSQL</span>
+<span class="px-sm py-1 bg-surface-container rounded-full text-primary font-label-sm text-label-sm border border-outline-variant/20">Docker</span>
+<span class="px-sm py-1 bg-surface-container rounded-full text-primary font-label-sm text-label-sm border border-outline-variant/20">Kubernetes</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Project Gallery Section -->
+<section class="py-xl" id="projects">
+<div class="max-w-container-max mx-auto px-md">
+<div class="flex flex-col md:flex-row md:justify-between md:items-end gap-md mb-lg">
+<div class="max-w-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Selected Work</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">A showcase of technical architecture and product design, ranging from complex fintech dashboards to generative art tools.</p>
+</div>
+<div class="flex items-center gap-xs overflow-x-auto pb-xs">
+<button class="px-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold whitespace-nowrap">All Projects</button>
+<button class="px-md py-2 rounded-lg text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md whitespace-nowrap">Full-Stack</button>
+<button class="px-md py-2 rounded-lg text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md whitespace-nowrap">Infrastructure</button>
+<button class="px-md py-2 rounded-lg text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md whitespace-nowrap">Experimental</button>
+</div>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Project Card 1 -->
+<div class="project-card group glass-card rounded-xl overflow-hidden border border-outline-variant/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="h-64 overflow-hidden relative">
+<img alt="Fintech Dashboard" class="project-image w-full h-full object-cover transition-transform duration-700" data-alt="A sophisticated dark-mode fintech dashboard interface with glowing neon blue line graphs, data visualizations, and minimalist typography. The UI is clean, using deep slate backgrounds with high-contrast elements. The lighting mimics a high-resolution display in a dimly lit, high-tech control room environment, projecting a sense of precision and complex data processing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxzhA7xvKU2UT_f-zDqKgcfwWsnTeyA6UQnkHormeyyCw8EaqTjy5X18CTI_zcsb_OYdLehAqArExWCZNCBL5LJkrJtgkXOn9m92DFZo-9pCO8LVnGT2HGrXCbHQ_bvPKIGLw6a_je9o5mCSzqLs2x4lwNDI-E0gp__tgp28IX1vMTSmEmM4ILH4CLLQNNwyX_sw7IaRPutuB1axgxu6qVqcbzcHkAozbsPqacLF5VMGGQI19nIL3mPT8cv1Bi5KR0UXN6kKrlgDM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<div class="p-lg space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Nova Finance</h3>
+<a class="text-primary hover:scale-110 transition-transform" href="#"><span class="material-symbols-outlined">open_in_new</span></a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time asset tracking platform with advanced risk analytics and automated trading triggers.</p>
+<div class="flex flex-wrap gap-xs pt-md">
+<span class="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">Next.js</span>
+<span class="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">GraphQL</span>
+<span class="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">Redis</span>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="project-card group glass-card rounded-xl overflow-hidden border border-outline-variant/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="h-64 overflow-hidden relative">
+<img alt="Security Infrastructure" class="project-image w-full h-full object-cover transition-transform duration-700" data-alt="A visual representation of cloud infrastructure security featuring a grid of digital locks and glowing server racks. The aesthetic is monochromatic with deep blues and cyan highlights, emphasizing technical robustness. Soft bokeh effects from status LEDs create depth, suggesting a vast, secure data center with cutting-edge encryption technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJCKgAr5zvwcwnm7QcBEm7eTaIGEBeIOwQpQXf1ZyO7u2XA2u060DL0qQCJaHv48JYdM01pyel-iV0-CCd2gUEyoO7xYdu32dEqVnfd6TixiBWItEVtQONmWc111Dauvj-GjrbZjUW3-JqaLi4NlhGX73dm-nJArh9rr_h77I8k1CXr9ICD_iQe0a2aloR5jKqp_Kx8Omgr9BJAlrORjtY9vNnOjun3Ac93SpV9FThOGIXfyM5Axr3nwriauWw4EDNyxtMqwhGaf8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<div class="p-lg space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Sentinel Shield</h3>
+<a class="text-primary hover:scale-110 transition-transform" href="#"><span class="material-symbols-outlined">open_in_new</span></a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Enterprise-grade security layer for cloud native applications with Zero Trust architecture.</p>
+<div class="flex flex-wrap gap-xs pt-md">
+<span class="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">Go</span>
+<span class="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">Kubernetes</span>
+<span class="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">Terraform</span>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="project-card group glass-card rounded-xl overflow-hidden border border-outline-variant/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="h-64 overflow-hidden relative">
+<img alt="Creative Experiment" class="project-image w-full h-full object-cover transition-transform duration-700" data-alt="Abstract generative art featuring fluid, organic shapes in vibrant electric blue and deep violet. The composition is dynamic and fluid, with high-quality textures that look like liquid metal or digital fabric. The lighting is dramatic, with sharp highlights and deep shadows, representing the intersection of creative coding and high-end visual design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAa3r2bEkpg4Te3gKeJ32cThAiYfBarTkbxPbzT78gjacbMeOQyq_jrWtIajt1qUHzmtwPeAgKfmDRoIzndXvFs3HELvpSoJFMt9be_VyrrQV5jP9YIh3AswAiVPXb-HSKFDFVCPygD2RO6Xb9DpADb6jw4IWgwdAHInhGPOblFAyyeKqtf-u2DivS-IShMJQp1Fkd8dCLBN-xlhc_8Rd0F-T8AMyhHIcNtX8voBeGYOCvs4c6zEt8bSPkhhAGU14ViD0GyxVvRfs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<div class="p-lg space-y-sm">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Prism Generative</h3>
+<a class="text-primary hover:scale-110 transition-transform" href="#"><span class="material-symbols-outlined">open_in_new</span></a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">A creative coding sandbox for generating procedural animations using WebGL and Three.js.</p>
+<div class="flex flex-wrap gap-xs pt-md">
+<span class="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">TypeScript</span>
+<span class="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">WebGL</span>
+<span class="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">GLSL</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-lg text-center">
+<button class="bg-transparent border border-outline-variant/30 text-on-surface px-lg py-sm rounded-lg font-label-md text-label-md font-bold hover:border-primary hover:text-primary transition-all active:scale-95 inline-flex items-center gap-xs">
+                        View All Archives <span class="material-symbols-outlined">history</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Experience Section (Bonus for context) -->
+<section class="py-xl bg-surface-container-lowest relative overflow-hidden" id="experience">
+<div class="max-w-container-max mx-auto px-md relative z-10">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-lg text-center">Career Journey</h2>
+<div class="max-w-3xl mx-auto space-y-lg">
+<div class="relative pl-lg border-l-2 border-outline-variant/30">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary ring-4 ring-background"></div>
+<div class="mb-xs flex justify-between items-start">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Senior Software Engineer</h4>
+<span class="font-label-md text-label-md text-primary">2021 — Present</span>
+</div>
+<div class="text-on-surface-variant font-label-md text-label-md mb-sm uppercase tracking-wider">TechNova Solutions</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Leading the migration of a legacy monolithic platform to a modern microservices architecture using Node.js and AWS, improving system reliability by 40%.</p>
+</div>
+<div class="relative pl-lg border-l-2 border-outline-variant/30">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-outline-variant ring-4 ring-background hover:bg-primary transition-all"></div>
+<div class="mb-xs flex justify-between items-start">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Full-Stack Developer</h4>
+<span class="font-label-md text-label-md text-on-surface-variant">2018 — 2021</span>
+</div>
+<div class="text-on-surface-variant font-label-md text-label-md mb-sm uppercase tracking-wider">Global Dev Systems</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Developed core features for a collaborative task management SaaS, focusing on real-time data sync using WebSockets and optimized React rendering.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-xl" id="contact">
+<div class="max-w-container-max mx-auto px-md">
+<div class="grid md:grid-cols-2 gap-xl">
+<div class="space-y-lg">
+<div>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-sm">Let's build <br/>together.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Open for consulting, permanent roles, or just technical discussions over coffee.</p>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-md group">
+<div class="w-12 h-12 rounded-lg glass-card flex items-center justify-center text-primary border border-outline-variant/10 group-hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Email Me</div>
+<div class="font-body-lg text-on-surface">alex@rivera.exe</div>
+</div>
+</div>
+<div class="flex items-center gap-md group">
+<div class="w-12 h-12 rounded-lg glass-card flex items-center justify-center text-primary border border-outline-variant/10 group-hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Location</div>
+<div class="font-body-lg text-on-surface">Austin, Texas, USA</div>
+</div>
+</div>
+</div>
+<div class="flex gap-md pt-lg">
+<a class="w-12 h-12 rounded-lg glass-card flex items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+<a class="w-12 h-12 rounded-lg glass-card flex items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+</div>
+</div>
+<div class="glass-card p-lg rounded-xl border border-outline-variant/10">
+<form class="space-y-md">
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Name</label>
+<input class="w-full bg-surface-container border border-outline-variant/20 rounded-lg px-md py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Company</label>
+<input class="w-full bg-surface-container border border-outline-variant/20 rounded-lg px-md py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" placeholder="Tech Inc." type="text"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Email</label>
+<input class="w-full bg-surface-container border border-outline-variant/20 rounded-lg px-md py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" placeholder="john@example.com" type="email"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Message</label>
+<textarea class="w-full bg-surface-container border border-outline-variant/20 rounded-lg px-md py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" placeholder="How can I help you?" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-sm rounded-lg font-label-md text-label-md font-bold hover:opacity-90 transition-all active:scale-95 flex items-center justify-center gap-xs">
+                                Send Message <span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-lg bg-surface-container-lowest border-t border-outline-variant/5">
+<div class="max-w-container-max mx-auto px-md flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="font-label-md text-label-md font-bold text-on-surface">ALEX_RIVERA.EXE</div>
+<div class="font-label-md text-label-md text-on-surface-variant">© 2024 Alex Rivera. Built with Precision.</div>
+<div class="flex gap-lg">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md hover:opacity-80 transition-opacity duration-200" href="#">Github</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md hover:opacity-80 transition-opacity duration-200" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md hover:opacity-80 transition-opacity duration-200" href="#">Source</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth reveal on scroll logic
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+
+        // Navigation active state logic
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary', 'pb-1');
+                link.classList.add('text-on-surface-variant');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.remove('text-on-surface-variant');
+                    link.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary', 'pb-1');
+                }
+            });
+        });
+    </script>
+</body></html>
