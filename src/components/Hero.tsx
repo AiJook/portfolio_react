@@ -1,26 +1,78 @@
+import {  WavesArrowDown } from "lucide-react";
+import { Item, ItemActions, ItemContent, ItemTitle } from "./ui/item";
+
 export function Hero() {
     return (
 
         <div className="max-w-container-max mx-auto px-md w-full grid md:grid-cols-12 gap-lg items-center">
             <div className=" md:col-span-7 space-y-md items-center justify-center ">
-                <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm uppercase tracking-widest">
+                <div className="text-sm inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary uppercase tracking-widest">
                     <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse" />
                     Available for Full-Stack Opportunities
                 </div>
                 <div className="py-4 space-y-lg">
                     <h1 className="scroll-m-20 pb-2 text-3xl text-primary font-semibold tracking-tight first:mt-0">
-                        <span className="italic">Building, learning,</span>{" "}
-                        <h1>and <span className="italic">evolving</span> with technology.</h1>
+                        <span className="text-4xl italic inline-block bg-linear-to-r from-[#005F73] via-[#0A9396] to-[#52D8C9] bg-size-[300%_auto] bg-clip-text text-transparent animate-[shimmer_6s_linear_infinite]">Building</span>,{" "}
+                        <span className="text-4xl italic inline-block bg-linear-to-r from-[#005F73] via-[#0A9396] to-[#52D8C9] bg-size-[300%_auto] bg-clip-text text-transparent animate-[shimmer_6s_linear_infinite]">learning</span>, and{" "}
+                        <span className="text-4xl italic inline-block bg-linear-to-r from-[#005F73] via-[#0A9396] to-[#52D8C9] bg-size-[300%_auto] bg-clip-text text-transparent animate-[shimmer_6s_linear_infinite]">evolving</span> with technology.
                     </h1>
                     <p className="font-body-lg text-muted-foreground text-on-surface-variant max-w-xl">
                         Computer Science graduate with hands-on experience in full-stack development through internship and academic projects. Skilled in Go, Nuxt.js, and Flutter, with experience building RESTful APIs, web applications, and mobile applications. A fast learner who continuously seeks to improve technical and problem-solving skills, and currently looking for an opportunity to grow as a Full-stack Developer while contributing to impactful and scalable systems.          </p>
-                    <div className="flex flex-wrap gap-md pt-md">
-                        <a className="bg-gradient-to-r from-primary to-secondary text-on-primary px-lg py-sm rounded-lg font-label-md text-label-md font-bold transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-xs" href="#projects">
-                            View Portfolio <span className="material-symbols-outlined">arrow_forward</span>
-                        </a>
-                        <a className="bg-transparent border border-outline-variant/30 text-on-surface px-lg py-sm rounded-lg font-label-md text-label-md font-bold transition-all hover:border-primary hover:text-primary active:scale-95" href="#contact">
-                            Let's Talk
-                        </a>
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
+                        <Item
+                            variant="outline"
+                            asChild
+                            className="w-auto flex-none rounded-full overflow-hidden"
+                        >
+                            <a
+                                href="#"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-6xl"
+                                style={{
+                                    background: "linear-gradient(135deg, #534AB7 0%, #1D9E75 100%)",
+                                    animation: "glowPulse 6s ease-in-out infinite",
+                                }}
+                            >
+                                <ItemContent className="gap-0 px-2">
+                                    <ItemTitle className="text-white">Download CV</ItemTitle>
+                                </ItemContent>
+                                <ItemActions>
+                                    {/* วงกลมสีขาวครอบไอคอน */}
+                                    <span className="flex size-8 items-center justify-center rounded-full bg-white">
+                                        <WavesArrowDown className="size-4 text-[#534AB7]" />
+                                    </span>
+                                </ItemActions>  
+                            </a>
+                        </Item>
+                        <Item
+                            variant="outline"
+                            asChild
+                            className="w-auto flex-none rounded-full overflow-hidden"
+                        >
+                            <a
+                                href="#"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-6xl"
+                                style={{
+                                    background: "",
+                                    animation: "glowPulse 6s ease-in-out infinite",
+                                }}
+                            >
+                                <ItemContent className="gap-0 px-2">
+                                    <ItemTitle className="text-[#534AB7]">My Projects</ItemTitle>
+                                    
+                                </ItemContent>
+                                <ItemActions>
+                                    {/* วงกลมสีขาวครอบไอคอน */}
+                                    <span className="flex size-8 items-center justify-center rounded-full bg-[#534AB7]">
+                                        <WavesArrowDown className="size-4 text-white" />
+                                    </span>
+                                </ItemActions>
+                            </a>
+                        </Item>
+                        
                     </div>
                 </div>
             </div>

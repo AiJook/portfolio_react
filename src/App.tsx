@@ -1,10 +1,6 @@
 import { useEffect } from "react"
 
 import { Hero } from "./components/Hero"
-import { About } from "./components/About"
-import { Projects } from "./components/Projects"
-import { Experience } from "./components/Experience"
-import { Contact } from "./components/Contact"
 import { Footer } from "./components/Footer"
 import { Header } from "./components/navbar/Header"
 
@@ -34,10 +30,10 @@ export default function App() {
       <Header />
       <main className="pt-16">
         <Hero />
-        <About />
+        {/* <About />
         <Projects />
         <Experience />
-        <Contact />
+        <Contact /> */}
       </main>
       <Footer />
     </div>
