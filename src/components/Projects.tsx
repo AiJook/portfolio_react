@@ -1,85 +1,113 @@
-import { useState } from "react"
+import { FileText } from "lucide-react";
+import { Item, ItemContent, ItemDescription, ItemTitle } from "./ui/item";
 
-const PROJECT_DATA = [
+// จำลองข้อมูลโปรเจกต์ตามภาพถ่ายของคุณ
+const projectData = [
   {
-    title: "Nova Finance",
-    desc: "Real-time asset tracking platform with advanced risk analytics and automated trading triggers.",
-    tags: ["Next.js", "GraphQL", "Redis"],
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxzhA7xvKU2UT_f-zDqKgcfwWsnTeyA6UQnkHormeyyCw8EaqTjy5X18CTI_zcsb_OYdLehAqArExWCZNCBL5LJkrJtgkXOn9m92DFZo-9pCO8LVnGT2HGrXCbHQ_bvPKIGLw6a_je9o5mCSzqLs2x4lwNDI-E0gp__tgp28IX1vMTSmEmM4ILH4CLLQNNwyX_sw7IaRPutuB1axgxu6qVqcbzcHkAozbsPqacLF5VMGGQI19nIL3mPT8cv1Bi5KR0UXN6kKrlgDM"
+    title: "Distributed Product Management System",
+    description: "Distributed architecture with product, stock, order, and auth modules.",
+    tags: [".NET", "Next.js", "SQL Server", "RabbitMQ", "CQRS"],
+    githubUrl: "#",
+    caseStudyUrl: "#",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80", // เปลี่ยนเป็นพาธรูปภาพจริงของคุณในโฟลเดอร์ assets ได้เลย
+    isDeveloping: false,
   },
   {
-    title: "Sentinel Shield",
-    desc: "Enterprise-grade security layer for cloud native applications with Zero Trust architecture.",
-    tags: ["Go", "Kubernetes", "Terraform"],
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJCKgAr5zvwcwnm7QcBEm7eTaIGEBeIOwQpQXf1ZyO7u2XA2u060DL0qQCJaHv48JYdM01pyel-iV0-CCd2gUEyoO7xYdu32dEqVnfd6TixiBWItEVtQONmWc111Dauvj-GjrbZjUW3-JqaLi4NlhGX73dm-nJArh9rr_h77I8k1CXr9ICD_iQe0a2aloR5jKqp_Kx8Omgr9BJAlrORjtY9vNnOjun3Ac93SpV9FThOGIXfyM5Axr3nwriauWw4EDNyxtMqwhGaf8"
+    title: "Smart Expense & Finance Tracker",
+    description: "Track daily expenses, budgets, reports, and financial summaries.",
+    tags: [".NET API", "Next.js", "EF Core", "Charts"],
+    githubUrl: "#",
+    caseStudyUrl: "#",
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80",
+    isDeveloping: true, // ใส่สถานะ "กำลังพัฒนา"
   },
   {
-    title: "Prism Generative",
-    desc: "A creative coding sandbox for generating procedural animations using WebGL and Three.js.",
-    tags: ["TypeScript", "WebGL", "GLSL"],
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAAa3r2bEkpg4Te3gKeJ32cThAiYfBarTkbxPbzT78gjacbMeOQyq_jrWtIajt1qUHzmtwPeAgKfmDRoIzndXvFs3HELvpSoJFMt9be_VyrrQV5jP9YIh3AswAiVPXb-HSKFDFVCPygD2RO6Xb9DpADb6jw4IWgwdAHInhGPOblFAyyeKqtf-u2DivS-IShMJQp1Fkd8dCLBN-xlhc_8Rd0F-T8AMyhHIcNtX8voBeGYOCvs4c6zEt8bSPkhhAGU14ViD0GyxVvRfs"
-  }
-]
+    title: "Mini CRM System",
+    description: "Manage customer profiles, follow-ups, sales opportunities, and reports.",
+    tags: ["CRM", "TypeScript", "SQL Server", "JWT"],
+    githubUrl: "#",
+    caseStudyUrl: "#",
+    imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80",
+    isDeveloping: true,
+  },
+];
 
 export function Projects() {
-  const [activeTab, setActiveTab] = useState("All Projects")
-  const tabs = ["All Projects", "Full-Stack", "Infrastructure", "Experimental"]
-
   return (
-    <section className="py-xl" id="projects">
-      <div className="max-w-container-max mx-auto px-md">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-md mb-lg">
-          <div className="max-w-xl">
-            <h2 className="font-headline-md text-headline-md text-on-surface mb-sm">Selected Work</h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">A showcase of technical architecture and product design, ranging from complex fintech dashboards to generative art tools.</p>
-          </div>
-          
-          <div className="flex items-center gap-xs overflow-x-auto pb-xs">
-            {tabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-md py-2 rounded-lg font-label-md text-label-md whitespace-nowrap transition-colors ${
-                  activeTab === tab ? "bg-primary text-on-primary font-bold" : "text-on-surface-variant hover:text-primary"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-        </div>
+    <section className="w-full max-w-7xl mx-auto px-4 py-16">
+      {/* หัวข้อ Section */}
+      <h2 className="text-2xl font-bold tracking-tight text-slate-100 mb-8">
+        Projects
+      </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
-          {PROJECT_DATA.map((proj) => (
-            <div key={proj.title} className="project-card group glass-card rounded-xl overflow-hidden border border-outline-variant/10 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-              <div className="h-64 overflow-hidden relative">
-                <img alt={proj.title} className="project-image w-full h-full object-cover transition-transform duration-700" src={proj.img} />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
-              </div>
-              <div className="p-lg space-y-sm">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-headline-sm text-headline-sm text-on-surface">{proj.title}</h3>
-                  <a className="text-primary hover:scale-110 transition-transform" href="#" target="_blank" rel="noopener noreferrer">
-                    <span className="material-symbols-outlined">open_in_new</span>
-                  </a>
-                </div>
-                <p className="font-body-md text-body-md text-on-surface-variant">{proj.desc}</p>
-                <div className="flex flex-wrap gap-xs pt-md">
-                  {proj.tags.map((t) => (
-                    <span key={t} className="px-sm py-1 bg-primary/5 text-primary rounded-full font-label-sm text-label-sm border border-primary/10">{t}</span>
-                  ))}
-                </div>
-              </div>
+      {/* Grid ควบคุมการแสดงผลการ์ดโปรเจกต์ */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projectData.map((project, index) => (
+          <Item
+            key={index}
+            variant="outline"
+            className="group flex flex-col overflow-hidden bg-slate-950/40 border-slate-900 rounded-2xl backdrop-blur-sm hover:border-slate-800 transition-all duration-300"
+          >
+            {/* โซนรูปภาพด้านบนการ์ด */}
+            <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-slate-900 bg-slate-900/50">
+              <img
+                src={project.imageUrl}
+                alt={project.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+              />
+
+              {/* ป้ายกำกับ "กำลังพัฒนา" สีเหลืองทองมุมขวาบน */}
+              {project.isDeveloping && (
+                <span className="absolute top-3 right-3 px-3 py-1 text-xs font-medium rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 backdrop-blur-md">
+                  กำลังพัฒนา
+                </span>
+              )}
             </div>
-          ))}
-        </div>
 
-        <div className="mt-lg text-center">
-          <button className="bg-transparent border border-outline-variant/30 text-on-surface px-lg py-sm rounded-lg font-label-md text-label-md font-bold hover:border-primary hover:text-primary transition-all active:scale-95 inline-flex items-center gap-xs">
-            View All Archives <span className="material-symbols-outlined">history</span>
-          </button>
-        </div>
+            {/* โซนเนื้อหาข้อมูลโปรเจกต์ */}
+            <ItemContent className="flex flex-col flex-1 p-6 space-y-4">
+              <div className="space-y-2 flex-1">
+                <ItemTitle className="text-xl font-bold text-slate-100 group-hover:text-primary transition-colors line-clamp-1">
+                  {project.title}
+                </ItemTitle>
+                <ItemDescription className="text-sm text-slate-400 line-clamp-2 leading-relaxed">
+                  {project.description}
+                </ItemDescription>
+              </div>
+
+              {/* รายการแท็กเทคโนโลยี (เรียงแนวนอนแบบพันรอบเมื่อพื้นที่ไม่พอ) */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-xs font-medium rounded-full bg-slate-900 text-slate-400 border border-slate-800/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* ปุ่ม Action ลิงก์ไปภายนอกที่ท้ายการ์ด */}
+              <div className="flex items-center gap-4 pt-4 border-t border-slate-900/60 text-sm">
+                <a
+                  href={project.githubUrl}
+                  className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors font-medium"
+                >
+
+                  View GitHub
+                </a>
+                <a
+                  href={project.caseStudyUrl}
+                  className="flex items-center gap-2 text-slate-500 hover:text-white transition-colors font-medium"
+                >
+                  <FileText className="size-4" />
+                  Case Study
+                </a>
+              </div>
+            </ItemContent>
+          </Item>
+        ))}
       </div>
     </section>
-  )
+  );
 }

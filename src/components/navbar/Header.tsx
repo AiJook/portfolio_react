@@ -24,7 +24,7 @@ export function Header() {
   const portfolioItems = NAV_ITEMS.find((i) => i.children)?.children || []
 
   return (
-    <header className="px-6 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       {/* Pill bar หลัก */}
       <div
         className="flex items-center justify-between rounded-full px-3 py-2"

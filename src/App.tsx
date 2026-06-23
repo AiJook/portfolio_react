@@ -1,8 +1,11 @@
 import { useEffect } from "react"
 
-import { Hero } from "./components/Hero"
 import { Footer } from "./components/Footer"
 import { Header } from "./components/navbar/Header"
+import { Skills } from "./components/skills"
+import { Projects } from "./components/Projects"
+import { Experience } from "./components/Experience"
+import { Hero } from "./components/Hero"
 
 export default function App() {
   useEffect(() => {
@@ -28,8 +31,11 @@ export default function App() {
   return (
     <div className="bg-background text-on-surface selection:bg-primary/30">
       <Header />
-      <main className="pt-16">
+      <main>
         <Hero />
+        <Skills />
+        <Projects />
+        <Experience />
         {/* <About />
         <Projects />
         <Experience />
