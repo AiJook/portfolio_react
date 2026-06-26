@@ -3,9 +3,10 @@ import { useEffect } from "react"
 import { Footer } from "./components/Footer"
 import { Header } from "./components/navbar/Header"
 import { Skills } from "./components/skills"
-import { Projects } from "./components/Projects"
 import { Experience } from "./components/Experience"
 import { Hero } from "./components/Hero"
+import { About } from "./components/About"
+import { Contact } from "./components/Contact"
 
 export default function App() {
   useEffect(() => {
@@ -33,13 +34,10 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <About />
         <Skills />
-        <Projects />
         <Experience />
-        {/* <About />
-        <Projects />
-        <Experience />
-        <Contact /> */}
+        <Contact />
       </main>
       <Footer />
     </div>

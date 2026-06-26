@@ -1,112 +1,115 @@
-import { FileText } from "lucide-react";
-import { Item, ItemContent, ItemDescription, ItemTitle } from "./ui/item";
+import { ArrowRight } from "lucide-react";
+import { IconSvgGitHub } from "./icon/IconSvg";
 
-// จำลองข้อมูลโปรเจกต์ตามภาพถ่ายของคุณ
 const projectData = [
   {
-    title: "Distributed Product Management System",
-    description: "Distributed architecture with product, stock, order, and auth modules.",
-    tags: [".NET", "Next.js", "SQL Server", "RabbitMQ", "CQRS"],
+    title: "Lost & Found (Senior Project)",
+    category: "Mobile Application",
+    description: "Mobile application for posting lost and found items. Features SIFT-based visual search, ownership verification, private chat, and auto-notifications.",
+    tags: ["Flutter", "Golang", "Firebase", "MySQL", "Visual Search"],
     githubUrl: "#",
     caseStudyUrl: "#",
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80", // เปลี่ยนเป็นพาธรูปภาพจริงของคุณในโฟลเดอร์ assets ได้เลย
-    isDeveloping: false,
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
   },
   {
-    title: "Smart Expense & Finance Tracker",
-    description: "Track daily expenses, budgets, reports, and financial summaries.",
-    tags: [".NET API", "Next.js", "EF Core", "Charts"],
+    title: "Smart Blood Bank",
+    category: "Web Application",
+    description: "Platform for managing blood donation processes in hospitals. Built frontend functionality and designed responsive web interfaces using Figma.",
+    tags: ["Flutter", "Figma", "Retrofit", "Authentication"],
     githubUrl: "#",
     caseStudyUrl: "#",
-    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80",
-    isDeveloping: true, // ใส่สถานะ "กำลังพัฒนา"
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80",
   },
   {
-    title: "Mini CRM System",
-    description: "Manage customer profiles, follow-ups, sales opportunities, and reports.",
-    tags: ["CRM", "TypeScript", "SQL Server", "JWT"],
+    title: "PaJook Delivery",
+    category: "Mobile Application",
+    description: "On-demand rider booking app to handle item pickup and delivery. Implemented real-time location tracking for senders, recipients, and riders.",
+    tags: ["Flutter", "Firebase", "Realtime Tracking"],
     githubUrl: "#",
     caseStudyUrl: "#",
-    imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80",
-    isDeveloping: true,
+    imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80",
+  },
+  {
+    title: "Anihot",
+    category: "Web Application",
+    description: "FaceMash-inspired app utilizing the Elo Rating algorithm to calculate and update character rankings based on continuous user votes.",
+    tags: ["Angular", "Node.js", "MySQL", "Elo Rating"],
+    githubUrl: "#",
+    caseStudyUrl: "#",
+    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80",
   },
 ];
 
 export function Projects() {
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-16">
-      {/* หัวข้อ Section */}
-      <h2 className="text-2xl font-bold tracking-tight text-slate-100 mb-8">
-        Projects
-      </h2>
+    <section className="py-24 relative" id="projects">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-3 flex items-center gap-2">
+              <span className="w-8 h-[1px] bg-primary"></span>
+              Portfolio
+            </h2>
+            <h3 className="text-3xl md:text-5xl font-heading font-bold text-white">
+              Featured Work
+            </h3>
+          </div>
+          <a href="https://github.com/sutthikan-butnangkul" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors font-medium">
+            View all on GitHub <ArrowRight className="size-4" />
+          </a>
+        </div>
 
-      {/* Grid ควบคุมการแสดงผลการ์ดโปรเจกต์ */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projectData.map((project, index) => (
-          <Item
-            key={index}
-            variant="outline"
-            className="group flex flex-col overflow-hidden bg-slate-950/40 border-slate-900 rounded-2xl backdrop-blur-sm hover:border-slate-800 transition-all duration-300"
-          >
-            {/* โซนรูปภาพด้านบนการ์ด */}
-            <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-slate-900 bg-slate-900/50">
-              <img
-                src={project.imageUrl}
-                alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-              />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projectData.map((project, index) => (
+            <div
+              key={index}
+              className="group relative rounded-3xl overflow-hidden glass-panel border-white/5 hover:border-primary/30 transition-all duration-500"
+            >
+              {/* Image Container with Zoom effect */}
+              <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent z-10 opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-60 group-hover:opacity-100"
+                />
 
-              {/* ป้ายกำกับ "กำลังพัฒนา" สีเหลืองทองมุมขวาบน */}
-              {project.isDeveloping && (
-                <span className="absolute top-3 right-3 px-3 py-1 text-xs font-medium rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 backdrop-blur-md">
-                  กำลังพัฒนา
-                </span>
-              )}
-            </div>
-
-            {/* โซนเนื้อหาข้อมูลโปรเจกต์ */}
-            <ItemContent className="flex flex-col flex-1 p-6 space-y-4">
-              <div className="space-y-2 flex-1">
-                <ItemTitle className="text-xl font-bold text-slate-100 group-hover:text-primary transition-colors line-clamp-1">
-                  {project.title}
-                </ItemTitle>
-                <ItemDescription className="text-sm text-slate-400 line-clamp-2 leading-relaxed">
-                  {project.description}
-                </ItemDescription>
-              </div>
-
-              {/* รายการแท็กเทคโนโลยี (เรียงแนวนอนแบบพันรอบเมื่อพื้นที่ไม่พอ) */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 text-xs font-medium rounded-full bg-slate-900 text-slate-400 border border-slate-800/60"
-                  >
-                    {tag}
+                {/* Top Tags */}
+                <div className="absolute top-6 left-6 z-20">
+                  <span className="px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-xs font-bold text-white tracking-wider uppercase">
+                    {project.category}
                   </span>
-                ))}
+                </div>
               </div>
 
-              {/* ปุ่ม Action ลิงก์ไปภายนอกที่ท้ายการ์ด */}
-              <div className="flex items-center gap-4 pt-4 border-t border-slate-900/60 text-sm">
-                <a
-                  href={project.githubUrl}
-                  className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors font-medium"
-                >
+              {/* Content area */}
+              <div className="absolute bottom-0 left-0 w-full p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <h4 className="text-3xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h4>
+                <p className="text-slate-300 text-sm md:text-base line-clamp-2 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  {project.description}
+                </p>
 
-                  View GitHub
-                </a>
-                <a
-                  href={project.caseStudyUrl}
-                  className="flex items-center gap-2 text-slate-500 hover:text-white transition-colors font-medium"
-                >
-                  <FileText className="size-4" />
-                  Case Study
-                </a>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="text-xs font-medium text-slate-400 bg-white/5 px-2 py-1 rounded-md border border-white/5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                    <a href={project.githubUrl} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors backdrop-blur-md">
+                      <IconSvgGitHub className="size-4" />
+                    </a>
+                  </div>
+                </div>
               </div>
-            </ItemContent>
-          </Item>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

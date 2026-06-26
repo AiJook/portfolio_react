@@ -1,69 +1,88 @@
-import { Code2, Layout, Database, Wrench } from "lucide-react";
-import { Item, ItemContent, ItemDescription, ItemTitle } from "./ui/item";
+import { Terminal, Layout, Server, Database, Cloud, Wrench } from "lucide-react";
 
-// จำลองข้อมูล Skills เพื่อให้โค้ดสะอาดและดูแลง่าย
+// ข้อมูล Skills อ้างอิงจาก Resume
 const skillCategories = [
     {
-        title: "Backend",
-        icon: <Code2 className="size-5 text-blue-400" />,
-        skills: ["C#", "ASP.NET Core", ".NET 8/9", "Web API", "EF Core", "MediatR", "CQRS", "JWT"],
+        title: "Programming Languages",
+        icon: <Terminal className="size-6 text-fuchsia-400" />,
+        skills: ["Go", "TypeScript", "Dart", "Java", "PHP", "Python"],
+        glow: "hover:shadow-[0_0_30px_rgba(232,121,249,0.15)] hover:border-fuchsia-500/30",
     },
     {
-        title: "Frontend",
-        icon: <Layout className="size-5 text-cyan-400" />,
-        skills: ["Next.js", "React", "TypeScript", "Angular", "HTML", "CSS", "Responsive UI"],
+        title: "Frontend Development",
+        icon: <Layout className="size-6 text-cyan-400" />,
+        skills: ["Flutter", "Nuxt.js", "Angular", "HTML", "CSS", "Tailwind CSS", "Flowbite", "ApexCharts"],
+        glow: "hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] hover:border-cyan-500/30",
     },
     {
-        title: "Database",
-        icon: <Database className="size-5 text-emerald-400" />,
-        skills: ["SQL Server", "PostgreSQL", "MySQL", "Stored Procedure", "Database Design"],
+        title: "Backend Development",
+        icon: <Server className="size-6 text-blue-400" />,
+        skills: ["Gin", "GORM", "Node.js", "Spring Boot", "RESTful APIs"],
+        glow: "hover:shadow-[0_0_30px_rgba(96,165,250,0.15)] hover:border-blue-500/30",
     },
     {
-        title: "Tools & Architecture",
-        icon: <Wrench className="size-5 text-indigo-400" />,
-        skills: ["Microservices", "RabbitMQ", "Docker", "GitHub", "Swagger", "Postman", "Clean Architecture"],
+        title: "Database & Caching",
+        icon: <Database className="size-6 text-emerald-400" />,
+        skills: ["MySQL", "PostgreSQL", "Firebase", "Redis"],
+        glow: "hover:shadow-[0_0_30px_rgba(52,211,153,0.15)] hover:border-emerald-500/30",
+    },
+    {
+        title: "DevOps",
+        icon: <Cloud className="size-6 text-orange-400" />,
+        skills: ["Docker", "Firebase Hosting", "Portainer"],
+        glow: "hover:shadow-[0_0_30px_rgba(251,146,60,0.15)] hover:border-orange-500/30",
+    },
+    {
+        title: "Tools & Collab",
+        icon: <Wrench className="size-6 text-indigo-400" />,
+        skills: ["Git", "Postman", "Figma", "VSCode", "AI Dev"],
+        glow: "hover:shadow-[0_0_30px_rgba(129,140,248,0.15)] hover:border-indigo-500/30",
     },
 ];
 
 export function Skills() {
     return (
-        <section className="w-full max-w-7xl mx-auto px-4 py-12">
-            {/* หัวข้อ Section */}
-            <h2 className="text-2xl font-bold tracking-tight text-foreground mb-8">
-                Skills
-            </h2>
+        <section className="py-24 relative" id="skills">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="mb-16 text-center">
+                    <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-3 flex items-center justify-center gap-2">
+                        <span className="w-8 h-[1px] bg-primary"></span>
+                        Technical Arsenal
+                        <span className="w-8 h-[1px] bg-primary"></span>
+                    </h2>
+                    <h3 className="text-3xl md:text-5xl font-heading font-bold text-white">
+                        Tools & Technologies
+                    </h3>
+                </div>
 
-            {/* Grid การ์ดแยก 4 คอลัมน์ (ปรับตามขนาดหน้าจออัตโนมัติ) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {skillCategories.map((category) => (
-                    <Item
-                        key={category.title}
-                        variant="outline"
-                        className="p-6 bg-slate-950/40 border-slate-800/60 rounded-2xl backdrop-blur-sm hover:border-slate-700 transition-colors"
-                    >
-                        <ItemContent className="space-y-4">
-                            {/* หัวข้อหมวดหมู่ + ไอคอน */}
-                            <div className="flex items-center gap-2">
-                                {category.icon}
-                                <ItemTitle className="text-lg font-semibold text-slate-100">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {skillCategories.map((category) => (
+                        <div
+                            key={category.title}
+                            className={`glass-panel p-8 rounded-3xl transition-all duration-500 ${category.glow} group`}
+                        >
+                            <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/5 group-hover:border-white/10 transition-colors">
+                                <div className="p-3 rounded-2xl bg-white/5 border border-white/10">
+                                    {category.icon}
+                                </div>
+                                <h4 className="text-xl font-bold text-white">
                                     {category.title}
-                                </ItemTitle>
+                                </h4>
                             </div>
 
-                            {/* รายการแท็กสกิลย่อยด้านใน */}
-                            <ItemDescription className="flex flex-wrap gap-2 pt-2">
+                            <div className="flex flex-wrap gap-2">
                                 {category.skills.map((skill) => (
                                     <span
                                         key={skill}
-                                        className="px-3 py-1 text-xs font-medium rounded-full bg-slate-900/80 text-slate-300 border border-slate-800/80 hover:bg-slate-800/50 hover:text-white transition-all cursor-default"
+                                        className="px-4 py-2 text-sm font-medium rounded-xl bg-white/5 text-slate-300 border border-white/5 hover:bg-white/10 hover:text-white transition-colors cursor-default"
                                     >
                                         {skill}
                                     </span>
                                 ))}
-                            </ItemDescription>
-                        </ItemContent>
-                    </Item>
-                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );
