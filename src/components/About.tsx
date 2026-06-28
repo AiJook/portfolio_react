@@ -8,32 +8,30 @@ export function About() {
             About Me
           </h2>
           <h3 className="text-3xl md:text-5xl font-heading font-bold text-white">
-            Driven by curiosity,<br/>defined by execution.
+            Driven by curiosity,<br />defined by execution.
           </h3>
         </div>
-        
+
         <div className="grid md:grid-cols-3 gap-6">
           {/* Main Intro - spanning 2 cols */}
           <div className="md:col-span-2 glass-panel p-8 rounded-3xl glass-panel-hover flex flex-col justify-center">
-            <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-6">
-              <span className="material-symbols-outlined text-2xl">person</span>
+            <div className="w-fit p-2 h-auto rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-6">
+              <span className="material-symbols-outlined text-2xl">summary</span>
             </div>
             <h4 className="text-2xl font-bold text-white mb-4">The Developer</h4>
             <p className="text-slate-400 text-lg leading-relaxed mb-6">
-              I am a Computer Science graduate with hands-on experience in full-stack development through intensive internships and complex academic projects. I specialize in Go, Nuxt.js, and Flutter.
-            </p>
+              I enjoy building software that is both functional and visually engaging. As a recent <span className="text-primary">Computer Science</span> graduate, I've worked on full-stack web and mobile projects using modern technologies such as React, Node.js, Flutter, and Tailwind CSS.            </p>
             <p className="text-slate-400 text-lg leading-relaxed">
-              I am a fast learner who continuously seeks to improve technical and problem-solving skills. Currently looking for an opportunity to grow as a Full-stack Developer while contributing to impactful and scalable systems.
-            </p>
+              I value clean code, thoughtful user experiences, and continuous learning. I'm a fast learner who enjoys exploring new tools—including AI—to improve development workflows and create meaningful software solutions.            </p>
           </div>
 
           {/* Education */}
-          <div className="glass-panel p-8 rounded-3xl glass-panel-hover flex flex-col justify-between">
+          <div className="glass-panel p-8 rounded-3xl glass-panel-hover flex flex-col">
             <div>
-              <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center text-secondary mb-6">
-                <span className="material-symbols-outlined text-2xl">school</span>
+              <div className="w-fit p-2 h-auto rounded-xl bg-secondary/20 flex items-center justify-center text-secondary mb-6">
+                <span className="material-symbols-outlined text-2xl">Education</span>
               </div>
-              <h4 className="text-xl font-bold text-white mb-4">Education</h4>
+              {/* <h4 className="text-xl font-bold text-white mb-4">Education</h4> */}
               <div className="space-y-4">
                 <div>
                   <h5 className="font-semibold text-slate-200">Bachelor of Science</h5>
@@ -45,13 +43,17 @@ export function About() {
                 </div>
               </div>
             </div>
-            
-            <div className="mt-8 pt-6 border-t border-white/5">
-              <p className="text-sm text-slate-400">Expected Graduation</p>
-              <p className="text-lg font-bold text-gradient">May 2026</p>
-              <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs font-medium text-slate-300 border border-white/10">
-                GPAX: 3.68
+
+            <div className="flex justify-between items-center pt-6 border-t border-white/5">
+              <div>
+                <p className="text-sm text-slate-400">Expected Graduation</p>
+                <p className="text-lg font-bold text-gradient">May 2026</p>
               </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs font-medium text-slate-300 border border-white/10">
+                GPAX 3.68
+              </div>
+
+
             </div>
           </div>
         </div>

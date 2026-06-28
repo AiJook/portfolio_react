@@ -94,7 +94,7 @@ export function Hero() {
                     </div>
 
                     <div className="flex items-center gap-4 pt-8 border-t border-white/10">
-                        <a href="https://github.com/sutthikan-butnangkul" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-white/10 hover:text-primary transition-all">
+                        <a href="https://github.com/AiJook" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-white/10 hover:text-primary transition-all">
                             <GithubIcon className="size-5" />
                         </a>
                         <a href="https://www.linkedin.com/in/sutthikan-butnangkul" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-white/10 hover:text-primary transition-all">

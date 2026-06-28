@@ -1,4 +1,5 @@
-import { Mail, MapPin, Send, Phone } from "lucide-react";
+import { useState } from "react";
+import { Mail, MapPin, Send, Phone, CheckCircle2, X } from "lucide-react";
 import { LinkedinSvg } from "./icon/IconSvg";
 
 // Inlined Github SVG
@@ -10,6 +11,34 @@ const GithubIcon = ({ className }: { className?: string }) => (
 );
 
 export function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      
+      const data = await response.json();
+      if (data.success) {
+        setIsSuccess(true);
+        (e.target as HTMLFormElement).reset(); // Clear the form
+        setTimeout(() => setIsSuccess(false), 5000); // Auto-hide after 5s
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-24 relative" id="contact">
       {/* Decorative gradient blur */}
@@ -66,7 +95,7 @@ export function Contact() {
             </div>
 
             <div className="flex gap-4 pt-12 mt-12 border-t border-white/5">
-              <a href="https://github.com/sutthikan-butnangkul" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-white/5 transition-all">
+              <a href="https://github.com/AiJook" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-white/5 transition-all">
                 <GithubIcon className="size-5" />
               </a>
               <a href="https://www.linkedin.com/in/sutthikan-butnangkul" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-white/5 transition-all">
@@ -76,45 +105,84 @@ export function Contact() {
           </div>
 
           {/* Right Side: Form */}
-          <div className="glass-panel p-8 md:p-10 rounded-3xl border-white/5">
+          <div className="glass-panel p-8 md:p-10 rounded-3xl border-white/5 relative overflow-hidden">
+            
+            {/* Success Overlay */}
+            <div className={`absolute inset-0 bg-[#050505]/90 backdrop-blur-sm z-20 flex items-center justify-center transition-all duration-500 ${isSuccess ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+              <div className="flex flex-col items-center text-center p-6 transform transition-transform duration-500 scale-100">
+                <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
+                  <CheckCircle2 className="size-8 text-green-400" />
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-2">Message Sent!</h4>
+                <p className="text-slate-400 mb-6">Thank you for reaching out. I will get back to you as soon as possible.</p>
+                <button 
+                  onClick={() => setIsSuccess(false)}
+                  className="px-6 py-2 rounded-full border border-white/10 text-white hover:bg-white/5 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+
             <h4 className="text-2xl font-bold text-white mb-8">Send a Message</h4>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+              <input type="hidden" name="access_key" value="a0c1617f-52cf-4d0e-8eee-660d5d6ab4bc" />
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Your Name</label>
                   <input
-                    className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700"
+                    name="name"
+                    required
+                    className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700 disabled:opacity-50"
                     placeholder="John Doe"
                     type="text"
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Company</label>
+                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Company (Optional)</label>
                   <input
-                    className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700"
+                    name="company"
+                    className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700 disabled:opacity-50"
                     placeholder="Tech Inc."
                     type="text"
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Email Address</label>
                 <input
-                  className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700"
+                  name="email"
+                  required
+                  className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700 disabled:opacity-50"
                   placeholder="john@example.com"
                   type="email"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Message</label>
                 <textarea
-                  className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700 resize-none"
+                  name="message"
+                  required
+                  className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700 resize-none disabled:opacity-50"
                   placeholder="How can I help you?"
                   rows={5}
+                  disabled={isSubmitting}
                 ></textarea>
               </div>
-              <button className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(20,184,166,0.3)]">
-                Send Message <Send className="size-5" />
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(20,184,166,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>Sending... <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /></>
+                ) : (
+                  <>Send Message <Send className="size-5" /></>
+                )}
               </button>
             </form>
           </div>

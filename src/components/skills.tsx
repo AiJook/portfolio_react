@@ -1,6 +1,5 @@
 import { Terminal, Layout, Server, Database, Cloud, Wrench } from "lucide-react";
 
-// ข้อมูล Skills อ้างอิงจาก Resume
 const skillCategories = [
     {
         title: "Programming Languages",
@@ -59,9 +58,9 @@ export function Skills() {
                     {skillCategories.map((category) => (
                         <div
                             key={category.title}
-                            className={`glass-panel p-8 rounded-3xl transition-all duration-500 ${category.glow} group`}
+                            className={`glass-panel p-4 rounded-3xl transition-all duration-500 ${category.glow} group`}
                         >
-                            <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/5 group-hover:border-white/10 transition-colors">
+                            <div className="flex items-center gap-4 mb-4 pb-4 border-b border-white/5 group-hover:border-white/10 transition-colors">
                                 <div className="p-3 rounded-2xl bg-white/5 border border-white/10">
                                     {category.icon}
                                 </div>
