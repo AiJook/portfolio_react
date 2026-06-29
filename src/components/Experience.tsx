@@ -228,7 +228,7 @@ export function Experience() {
   };
 
   return (
-    <section className="py-24 relative" id="experience">
+    <section className="py-24 relative overflow-hidden" id="experience">
       {/* Decorative gradient blur */}
       <div className="absolute right-0 top-1/3 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
 

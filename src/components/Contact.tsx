@@ -23,6 +23,7 @@ export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % PROFILE_IMAGES.length);
@@ -30,6 +31,28 @@ export function Contact() {
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev === 0 ? PROFILE_IMAGES.length - 1 : prev - 1));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const currentX = e.touches[0].clientX;
+    const diff = touchStartX - currentX;
+
+    if (diff > 50) {
+      nextImage();
+      setTouchStartX(null);
+    } else if (diff < -50) {
+      prevImage();
+      setTouchStartX(null);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchStartX(null);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -58,7 +81,7 @@ export function Contact() {
   };
 
   return (
-    <section className="py-24 relative" id="contact">
+    <section className="py-24 relative overflow-hidden" id="contact">
       {/* Decorative gradient blur */}
       <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -143,7 +166,12 @@ export function Contact() {
             </div>
 
             {/* Profile Slider */}
-            <div className="w-full h-48 md:h-64 rounded-2xl overflow-hidden relative group/slider shrink-0 border border-border shadow-inner bg-surface">
+            <div 
+              className="w-full h-48 md:h-64 rounded-2xl overflow-hidden relative group/slider shrink-0 border border-border shadow-inner bg-surface"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <img
                 src={PROFILE_IMAGES[currentImageIndex] || profile1}
                 alt="Profile"
