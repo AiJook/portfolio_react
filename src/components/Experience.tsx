@@ -178,6 +178,7 @@ const timelineData: ProjectData[] = [
 export function Experience() {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const openModal = (project: ProjectData) => {
     setSelectedProject(project);
@@ -190,18 +191,40 @@ export function Experience() {
     document.body.style.overflow = 'auto';
   };
 
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (selectedProject?.gallery) {
       setCurrentImageIndex((prev) => (prev + 1) % selectedProject.gallery!.length);
     }
   };
 
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (selectedProject?.gallery) {
       setCurrentImageIndex((prev) => (prev === 0 ? selectedProject.gallery!.length - 1 : prev - 1));
     }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const currentX = e.touches[0].clientX;
+    const diff = touchStartX - currentX;
+
+    if (diff > 50) {
+      nextImage();
+      setTouchStartX(null);
+    } else if (diff < -50) {
+      prevImage();
+      setTouchStartX(null);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchStartX(null);
   };
 
   return (
@@ -327,7 +350,12 @@ export function Experience() {
             </button>
 
             {/* Left: Image Carousel */}
-            <div className="w-full h-[35vh] md:h-auto md:w-1/2 relative bg-black shrink-0 group/carousel">
+            <div 
+              className="w-full h-[35vh] md:h-auto md:w-1/2 relative bg-black shrink-0 group/carousel"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               {selectedProject.gallery && selectedProject.gallery.length > 0 ? (
                 <>
                   <div className="w-full h-full relative bg-[#050505] flex items-center justify-center">
