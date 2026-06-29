@@ -32,7 +32,6 @@ import anihot3 from "../assets/anihot/home.png";
 import anihot4 from "../assets/anihot/rank.png";
 import anihot5 from "../assets/anihot/upload.png";
 import anihot6 from "../assets/anihot/vote.png";
-import { GithubIcon } from "./icon/IconSvg";
 
 
 interface ProjectData {
@@ -216,7 +215,7 @@ export function Experience() {
             <span className="w-8 h-[1px] bg-secondary"></span>
             Career & Projects
           </h2>
-          <h3 className="text-4xl md:text-6xl font-heading font-bold text-white">
+          <h3 className="text-4xl md:text-6xl font-heading font-bold text-foreground">
             The Journey
           </h3>
         </div>
@@ -247,8 +246,8 @@ export function Experience() {
                       className="glass-panel p-8 rounded-3xl glass-panel-hover relative overflow-hidden cursor-pointer"
                     >
                       {/* Interactive overlay indicator */}
-                      <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[2px]">
-                        <span className="px-6 py-3 rounded-full bg-[#050505]/80 text-white font-bold border border-white/10 flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <div className="absolute inset-0 bg-transparent group-hover:bg-surface/5 transition-colors z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[2px]">
+                        <span className="px-6 py-3 rounded-full bg-background/80 text-foreground font-bold border border-border flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                           View Details <ArrowRight className="size-4" />
                         </span>
                       </div>
@@ -267,10 +266,10 @@ export function Experience() {
                       {/* Header */}
                       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4 relative z-10">
                         <div>
-                          <div className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">
+                          <div className="inline-block px-3 py-1 rounded-full bg-surface-hover border border-border text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
                             {item.duration}
                           </div>
-                          <h4 className="text-2xl font-bold text-white mb-1 group-hover:text-secondary transition-colors">
+                          <h4 className="text-2xl font-bold text-foreground mb-1 group-hover:text-secondary transition-colors">
                             {item.title}
                           </h4>
                           <p className={`text-lg font-medium ${item.type === 'experience' ? 'text-secondary' : 'text-primary'}`}>
@@ -278,21 +277,21 @@ export function Experience() {
                           </p>
                         </div>
                         {item.logoText && (
-                          <div className="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 flex items-center justify-center text-lg font-bold text-white shadow-lg">
+                          <div className="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-border flex items-center justify-center text-lg font-bold text-white shadow-lg">
                             {item.logoText}
                           </div>
                         )}
                       </div>
 
                       {/* Description */}
-                      <p className="text-slate-400 leading-relaxed mb-6 relative z-10">
+                      <p className="text-muted-foreground leading-relaxed mb-6 relative z-10">
                         {item.description}
                       </p>
 
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 relative z-10">
                         {item.tags.map(tag => (
-                          <span key={tag} className="px-3 py-1 rounded-lg bg-white/5 text-xs font-medium text-slate-300 border border-white/5">
+                          <span key={tag} className="px-3 py-1 rounded-lg bg-surface-hover text-xs font-medium text-foreground border border-border">
                             {tag}
                           </span>
                         ))}
@@ -312,17 +311,17 @@ export function Experience() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 animate-fadeSlideDown">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-[#050505]/80 backdrop-blur-md"
+            className="absolute inset-0 bg-background/80 backdrop-blur-md"
             onClick={closeModal}
           />
 
           {/* Modal Container */}
-          <div className="relative w-full max-w-4xl max-h-[90vh] bg-[#0f1115] border border-white/10 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col md:flex-row">
+          <div className="relative w-full max-w-4xl max-h-[90vh] bg-surface border border-border rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row">
 
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-white/10 transition-colors"
+              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
             >
               <X className="size-5" />
             </button>
@@ -375,32 +374,32 @@ export function Experience() {
             </div>
 
             {/* Right: Deep Details */}
-            <div className="w-full md:w-1/2 p-8 md:p-10 overflow-y-auto max-h-[60vh] md:max-h-full">
+            <div className="w-full md:w-1/2 p-8 md:p-10 overflow-y-auto max-h-[60vh] md:max-h-full bg-background">
               <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-bold uppercase tracking-wider text-primary mb-4">
                 {selectedProject.type === 'experience' ? 'Work Experience' : 'Project Highlight'}
               </div>
 
-              <h4 className="text-3xl font-bold text-white mb-2">
+              <h4 className="text-3xl font-bold text-foreground mb-2">
                 {selectedProject.title}
               </h4>
-              <p className="text-xl font-medium text-slate-300 mb-6 pb-6 border-b border-white/10">
+              <p className="text-xl font-medium text-muted-foreground mb-6 pb-6 border-b border-border">
                 {selectedProject.entity}
               </p>
 
               <div className="space-y-6">
                 <div>
-                  <h5 className="text-sm font-bold tracking-widest text-white/50 uppercase mb-3">Overview</h5>
-                  <p className="text-slate-300 leading-relaxed text-sm">
+                  <h5 className="text-sm font-bold tracking-widest text-foreground/50 uppercase mb-3">Overview</h5>
+                  <p className="text-foreground/80 leading-relaxed text-sm">
                     {selectedProject.longDescription || selectedProject.description}
                   </p>
                 </div>
 
                 {selectedProject.features && (
                   <div>
-                    <h5 className="text-sm font-bold tracking-widest text-white/50 uppercase mb-3">Key Features & Impact</h5>
+                    <h5 className="text-sm font-bold tracking-widest text-foreground/50 uppercase mb-3">Key Features & Impact</h5>
                     <ul className="space-y-3">
                       {selectedProject.features.map((feature, idx) => (
-                        <li key={idx} className="flex gap-3 text-sm text-slate-300">
+                        <li key={idx} className="flex gap-3 text-sm text-foreground/80">
                           <span className="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5 shrink-0" />
                           <span>{feature}</span>
                         </li>
@@ -410,17 +409,17 @@ export function Experience() {
                 )}
 
                 <div>
-                  <h5 className="text-sm font-bold tracking-widest text-white/50 uppercase mb-3">Tech Stack</h5>
+                  <h5 className="text-sm font-bold tracking-widest text-foreground/50 uppercase mb-3">Tech Stack</h5>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tags.map(tag => (
-                      <span key={tag} className="px-3 py-1.5 rounded-lg bg-white/5 text-xs font-medium text-slate-300 border border-white/10">
+                      <span key={tag} className="px-3 py-1.5 rounded-lg bg-surface-hover text-xs font-medium text-foreground border border-border">
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                {selectedProject.linkFe && (
+                {/* {selectedProject.linkFe && (
                   <div>
                     <a
                       href={selectedProject.linkFe}
@@ -430,9 +429,9 @@ export function Experience() {
                       Frontend Source Code
                     </a>
                   </div>
-                )}
+                )} */}
 
-                {selectedProject.linkBe && (
+                {/* {selectedProject.linkBe && (
                   <div>
                     <a
                       href={selectedProject.linkBe}
@@ -442,7 +441,7 @@ export function Experience() {
                       Backend Source Code
                     </a>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
 

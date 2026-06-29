@@ -1,31 +1,49 @@
 import { useState } from "react";
-import { Mail, MapPin, Send, Phone, CheckCircle2, X } from "lucide-react";
-import { LinkedinSvg } from "./icon/IconSvg";
+import { Mail, MapPin, Send, Phone, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { GithubIcon, LinkedinSvg } from "./icon/IconSvg";
 
-// Inlined Github SVG
-const GithubIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-    <path d="M9 18c-4.51 2-5-2-7-2" />
-  </svg>
-);
+import profile1 from "../assets/profile/IMG_0237.jpg";
+// import profile2 from "../assets/profile/IMG_1894.jpg";
+// import profile3 from "../assets/profile/IMG_2591.jpg";
+// import profile4 from "../assets/profile/IMG_2603.jpg";
+// import profile5 from "../assets/profile/IMG_4751.jpg";
+import profile6 from "../assets/profile/IMG_8172.jpg";
+import profile7 from "../assets/profile/IMG_4615.jpg";
+
+
+
+const PROFILE_IMAGES = [
+  profile1,
+  profile6,
+  profile7
+];
+
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % PROFILE_IMAGES.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? PROFILE_IMAGES.length - 1 : prev - 1));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     const formData = new FormData(e.currentTarget);
-    
+
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData
       });
-      
+
       const data = await response.json();
       if (data.success) {
         setIsSuccess(true);
@@ -53,11 +71,11 @@ export function Contact() {
                 <span className="w-8 h-[1px] bg-primary"></span>
                 Get In Touch
               </h2>
-              <h3 className="text-3xl md:text-6xl font-heading font-bold text-white mb-6">
+              <h3 className="text-3xl md:text-6xl font-heading font-bold text-foreground mb-6">
                 Let's build <br />
                 <span className="text-gradient">something great.</span>
               </h3>
-              <p className="text-slate-400 text-lg leading-relaxed max-w-md">
+              <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
                 Open for consulting, permanent roles, or just technical discussions over coffee. I am always looking for new opportunities to push boundaries.
               </p>
             </div>
@@ -68,8 +86,8 @@ export function Contact() {
                   <Mail className="size-6" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">Email Me</div>
-                  <div className="text-xl font-medium text-slate-200 group-hover:text-primary transition-colors">SutthikanwithB@gmail.com</div>
+                  <div className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Email Me</div>
+                  <div className="text-xl font-medium text-foreground group-hover:text-primary transition-colors">SutthikanwithB@gmail.com</div>
                 </div>
               </a>
 
@@ -78,8 +96,8 @@ export function Contact() {
                   <Phone className="size-6" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">Phone</div>
-                  <div className="text-xl font-medium text-slate-200">065-362-9420</div>
+                  <div className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Phone</div>
+                  <div className="text-xl font-medium text-foreground">065-362-9420</div>
                 </div>
               </div>
 
@@ -88,106 +106,149 @@ export function Contact() {
                   <MapPin className="size-6" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">Location</div>
-                  <div className="text-xl font-medium text-slate-200">Bangkok, Thailand</div>
+                  <div className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Location</div>
+                  <div className="text-xl font-medium text-foreground">Bangkok, Thailand</div>
                 </div>
               </div>
             </div>
 
-            <div className="flex gap-4 pt-12 mt-12 border-t border-white/5">
-              <a href="https://github.com/AiJook" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-white/5 transition-all">
+            <div className="flex gap-4 pt-12 mt-12 border-t border-border">
+              <a href="https://github.com/AiJook" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-muted-foreground hover:text-white hover:bg-primary transition-all">
                 <GithubIcon className="size-5" />
               </a>
-              <a href="https://www.linkedin.com/in/sutthikan-butnangkul" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-white/5 transition-all">
+              <a href="https://www.linkedin.com/in/sutthikan-butnangkul" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-muted-foreground hover:text-white hover:bg-primary transition-all">
                 <LinkedinSvg className="size-5" />
               </a>
             </div>
           </div>
 
-          {/* Right Side: Form */}
-          <div className="glass-panel p-8 md:p-10 rounded-3xl border-white/5 relative overflow-hidden">
-            
+          {/* Right Side: Form & Profile Slider */}
+          <div className="glass-panel p-8 md:p-10 rounded-3xl border-border relative overflow-hidden flex flex-col gap-8">
+
             {/* Success Overlay */}
-            <div className={`absolute inset-0 bg-[#050505]/90 backdrop-blur-sm z-20 flex items-center justify-center transition-all duration-500 ${isSuccess ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+            <div className={`absolute inset-0 bg-background/90 backdrop-blur-sm z-30 flex items-center justify-center transition-all duration-500 ${isSuccess ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
               <div className="flex flex-col items-center text-center p-6 transform transition-transform duration-500 scale-100">
                 <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
                   <CheckCircle2 className="size-8 text-green-400" />
                 </div>
-                <h4 className="text-2xl font-bold text-white mb-2">Message Sent!</h4>
-                <p className="text-slate-400 mb-6">Thank you for reaching out. I will get back to you as soon as possible.</p>
-                <button 
+                <h4 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h4>
+                <p className="text-muted-foreground mb-6">Thank you for reaching out. I will get back to you as soon as possible.</p>
+                <button
                   onClick={() => setIsSuccess(false)}
-                  className="px-6 py-2 rounded-full border border-white/10 text-white hover:bg-white/5 transition-colors"
+                  className="px-6 py-2 rounded-full border border-border text-foreground hover:bg-surface-hover transition-colors"
                 >
                   Close
                 </button>
               </div>
             </div>
 
-            <h4 className="text-2xl font-bold text-white mb-8">Send a Message</h4>
-            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-              <input type="hidden" name="access_key" value="a0c1617f-52cf-4d0e-8eee-660d5d6ab4bc" />
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Your Name</label>
-                  <input
-                    name="name"
-                    required
-                    className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700 disabled:opacity-50"
-                    placeholder="John Doe"
-                    type="text"
-                    disabled={isSubmitting}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Company (Optional)</label>
-                  <input
-                    name="company"
-                    className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700 disabled:opacity-50"
-                    placeholder="Tech Inc."
-                    type="text"
-                    disabled={isSubmitting}
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Email Address</label>
-                <input
-                  name="email"
-                  required
-                  className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700 disabled:opacity-50"
-                  placeholder="john@example.com"
-                  type="email"
-                  disabled={isSubmitting}
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Message</label>
-                <textarea
-                  name="message"
-                  required
-                  className="w-full bg-[#050505] border border-white/10 rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-white placeholder:text-slate-700 resize-none disabled:opacity-50"
-                  placeholder="How can I help you?"
-                  rows={5}
-                  disabled={isSubmitting}
-                ></textarea>
-              </div>
-              <button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(20,184,166,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
+            {/* Profile Slider */}
+            <div className="w-full h-48 md:h-64 rounded-2xl overflow-hidden relative group/slider shrink-0 border border-border shadow-inner bg-surface">
+              <img
+                src={PROFILE_IMAGES[currentImageIndex] || profile1}
+                alt="Profile"
+                className="w-full h-full object-cover transition-opacity duration-500"
+              />
+              {/* Overlay Gradient for contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
+
+              {/* Controls */}
+              <button
+                onClick={prevImage}
+                type="button"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/60 backdrop-blur-md border border-border text-foreground flex items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-primary hover:text-white shadow-lg z-20"
               >
-                {isSubmitting ? (
-                  <>Sending... <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /></>
-                ) : (
-                  <>Send Message <Send className="size-5" /></>
-                )}
+                <ChevronLeft className="size-5" />
               </button>
-            </form>
+              <button
+                onClick={nextImage}
+                type="button"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/60 backdrop-blur-md border border-border text-foreground flex items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-primary hover:text-white shadow-lg z-20"
+              >
+                <ChevronRight className="size-5" />
+              </button>
+
+              {/* Dots Indicator */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                {PROFILE_IMAGES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setCurrentImageIndex(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'w-6 bg-primary' : 'w-2 bg-foreground/30 hover:bg-foreground/50'}`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-2xl font-bold text-foreground mb-6">Send a Message</h4>
+              <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
+                <input type="hidden" name="access_key" value="a0c1617f-52cf-4d0e-8eee-660d5d6ab4bc" />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Your Name</label>
+                    <input
+                      name="name"
+                      required
+                      className="w-full bg-background border border-border rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-foreground placeholder:text-muted-foreground disabled:opacity-50"
+                      placeholder="John Doe"
+                      type="text"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Company (Optional)</label>
+                    <input
+                      name="company"
+                      className="w-full bg-background border border-border rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-foreground placeholder:text-muted-foreground disabled:opacity-50"
+                      placeholder="Tech Inc."
+                      type="text"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Email Address</label>
+                  <input
+                    name="email"
+                    required
+                    className="w-full bg-background border border-border rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-foreground placeholder:text-muted-foreground disabled:opacity-50"
+                    placeholder="john@example.com"
+                    type="email"
+                    disabled={isSubmitting}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Message</label>
+                  <textarea
+                    name="message"
+                    required
+                    className="w-full bg-background border border-border rounded-xl px-5 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-foreground placeholder:text-muted-foreground resize-none disabled:opacity-50"
+                    placeholder="How can I help you?"
+                    rows={5}
+                    disabled={isSubmitting}
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(20,184,166,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>Sending... <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /></>
+                  ) : (
+                    <>Send Message <Send className="size-5" /></>
+                  )}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </section>
   )
+
 }

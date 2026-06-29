@@ -7,6 +7,8 @@ import { Experience } from "./components/Experience"
 import { Hero } from "./components/Hero"
 import { About } from "./components/About"
 import { Contact } from "./components/Contact"
+import { ThemeProvider } from "./context/ThemeContext"
+import { AudioPlayer } from "./components/AudioPlayer"
 
 export default function App() {
   useEffect(() => {
@@ -30,16 +32,19 @@ export default function App() {
   }, [])
 
   return (
-    <div className="bg-background text-on-surface selection:bg-primary/30">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="bg-background text-foreground selection:bg-primary/30 min-h-screen">
+        <AudioPlayer />
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }

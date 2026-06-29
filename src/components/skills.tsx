@@ -34,7 +34,7 @@ const skillCategories = [
     {
         title: "Tools & Collab",
         icon: <Wrench className="size-6 text-indigo-400" />,
-        skills: ["Git", "Postman", "Figma", "VSCode", "AI Dev"],
+        skills: ["Git", "Postman", "Figma", "VSCode", "AI Dev", "Antigravity"],
         glow: "hover:shadow-[0_0_30px_rgba(129,140,248,0.15)] hover:border-indigo-500/30",
     },
 ];
@@ -49,7 +49,7 @@ export function Skills() {
                         Technical Arsenal
                         <span className="w-8 h-[1px] bg-primary"></span>
                     </h2>
-                    <h3 className="text-3xl md:text-5xl font-heading font-bold text-white">
+                    <h3 className="text-3xl md:text-5xl font-heading font-bold text-foreground">
                         Tools & Technologies
                     </h3>
                 </div>
@@ -60,11 +60,11 @@ export function Skills() {
                             key={category.title}
                             className={`glass-panel p-4 rounded-3xl transition-all duration-500 ${category.glow} group`}
                         >
-                            <div className="flex items-center gap-4 mb-4 pb-4 border-b border-white/5 group-hover:border-white/10 transition-colors">
-                                <div className="p-3 rounded-2xl bg-white/5 border border-white/10">
+                            <div className="flex items-center gap-4 mb-4 pb-4 border-b border-border group-hover:border-primary/30 transition-colors">
+                                <div className="p-3 rounded-2xl bg-surface-hover border border-border">
                                     {category.icon}
                                 </div>
-                                <h4 className="text-xl font-bold text-white">
+                                <h4 className="text-xl font-bold text-foreground">
                                     {category.title}
                                 </h4>
                             </div>
@@ -73,7 +73,7 @@ export function Skills() {
                                 {category.skills.map((skill) => (
                                     <span
                                         key={skill}
-                                        className="px-4 py-2 text-sm font-medium rounded-xl bg-white/5 text-slate-300 border border-white/5 hover:bg-white/10 hover:text-white transition-colors cursor-default"
+                                        className="px-4 py-2 text-sm font-medium rounded-xl bg-surface-hover text-foreground border border-border hover:bg-surface hover:text-primary transition-colors cursor-default"
                                     >
                                         {skill}
                                     </span>

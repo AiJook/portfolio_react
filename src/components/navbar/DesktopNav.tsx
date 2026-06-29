@@ -10,7 +10,7 @@ export function DesktopNav({ navItems }: { navItems: NavItem[] }) {
         <a 
           key={item.label}
           href={item.href} 
-          className="relative rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition-all hover:bg-white/5 hover:text-white hover:scale-105"
+          className="relative rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-surface hover:text-foreground hover:scale-105"
         >
           {item.label}
         </a>
