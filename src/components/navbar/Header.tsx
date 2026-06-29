@@ -18,8 +18,8 @@ export function Header() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-      <div className="mx-auto max-w-7xl flex items-center justify-between rounded-full px-4 py-3 glass-panel">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4">
+      <div className="mx-auto max-w-7xl w-full flex items-center justify-between rounded-full px-4 py-3 glass-panel">
         <Logo />
 
         <DesktopNav navItems={NAV_ITEMS} />

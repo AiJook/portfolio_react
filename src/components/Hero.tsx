@@ -31,7 +31,7 @@ export function Hero() {
 
             <div className="w-full max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                 {/* Left Content */}
-                <div className="space-y-8">
+                <div className="space-y-8 flex flex-col items-center text-center lg:items-start lg:text-left">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium animate-pulse-glow">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -53,8 +53,8 @@ export function Hero() {
                         </p>
                     </div>
 
-                    <div className="flex flex-col gap-2 pt-4">
-                        <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-col items-center lg:items-start gap-2 pt-4">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                             <a
                                 href="#experience"
                                 className="px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold flex items-center gap-2 hover:bg-primary/90 transition-all hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(20,184,166,0.4)]"
@@ -78,13 +78,13 @@ export function Hero() {
                                 </div>
                             </div>
                         </div>
-                        <p className="text-xs text-muted-foreground mt-2 pl-2 flex items-center gap-2">
+                        <p className="text-xs text-muted-foreground mt-2 flex items-center justify-center lg:justify-start gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(14,165,233,1)]" />
                             Downloaded {downloadCount} times
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-4 pt-8 border-t border-border">
+                    <div className="flex items-center justify-center lg:justify-start gap-4 pt-8 border-t border-border w-full">
                         <a href="https://github.com/AiJook" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-surface-hover hover:bg-primary hover:text-white transition-all text-muted-foreground">
                             <GithubIcon className="size-5" />
                         </a>
@@ -98,8 +98,8 @@ export function Hero() {
                 </div>
 
                 {/* Right Content - Abstract Tech Visual */}
-                <div className="hidden lg:flex justify-center relative items-center min-h-[500px]">
-                    <div className="relative w-full aspect-square max-w-[450px] flex items-center justify-center">
+                <div className="flex justify-center relative items-center min-h-[350px] lg:min-h-[500px] mt-8 lg:mt-0 w-full overflow-hidden">
+                    <div className="relative w-[450px] h-[450px] flex items-center justify-center scale-[0.65] sm:scale-75 lg:scale-100 origin-center">
 
                         {/* Radar Sweep Effect */}
                         <div className="absolute inset-0 rounded-full border border-primary/20 overflow-hidden opacity-50">

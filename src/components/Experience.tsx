@@ -316,7 +316,7 @@ export function Experience() {
           />
 
           {/* Modal Container */}
-          <div className="relative w-full max-w-4xl max-h-[90vh] bg-surface border border-border rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row">
+          <div className="absolute inset-0 md:inset-auto md:relative w-full h-[100dvh] md:h-auto md:max-w-4xl md:max-h-[90vh] bg-surface md:border md:border-border rounded-none md:rounded-3xl overflow-hidden shadow-none md:shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row">
 
             {/* Close Button */}
             <button
@@ -327,10 +327,10 @@ export function Experience() {
             </button>
 
             {/* Left: Image Carousel */}
-            <div className="w-full md:w-1/2 relative bg-black group/carousel">
+            <div className="w-full h-[35vh] md:h-auto md:w-1/2 relative bg-black shrink-0 group/carousel">
               {selectedProject.gallery && selectedProject.gallery.length > 0 ? (
                 <>
-                  <div className="w-full h-64 md:h-full relative bg-[#050505] flex items-center justify-center">
+                  <div className="w-full h-full relative bg-[#050505] flex items-center justify-center">
                     <img
                       src={selectedProject.gallery[currentImageIndex]}
                       alt={`${selectedProject.title} screenshot`}
@@ -374,7 +374,7 @@ export function Experience() {
             </div>
 
             {/* Right: Deep Details */}
-            <div className="w-full md:w-1/2 p-8 md:p-10 overflow-y-auto max-h-[60vh] md:max-h-full bg-background">
+            <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 overflow-y-auto flex-1 bg-background pb-12 md:pb-10">
               <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-bold uppercase tracking-wider text-primary mb-4">
                 {selectedProject.type === 'experience' ? 'Work Experience' : 'Project Highlight'}
               </div>

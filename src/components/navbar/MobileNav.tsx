@@ -21,7 +21,7 @@ export function MobileNav({ isOpen, navItems }: MobileNavProps) {
   }
 
   return (
-    <nav aria-label="Mobile navigation" className="flex animate-fadeSlideDown flex-col gap-2 p-4 mt-2 rounded-2xl bg-surface/95 backdrop-blur-xl border border-border shadow-2xl">
+    <nav aria-label="Mobile navigation" className="flex animate-fadeSlideDown flex-col gap-2 p-4 mt-2 rounded-2xl bg-surface/95 backdrop-blur-xl border border-border shadow-2xl w-full">
       {navItems.map((item) => {
         const Icon = MOBILE_ICONS[item.label] ?? Home
 
